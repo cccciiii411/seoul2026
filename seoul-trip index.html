@@ -1,0 +1,342 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta http-equiv="Content-Style-Type" content="text/css">
+  <title></title>
+  <meta name="Generator" content="Cocoa HTML Writer">
+  <meta name="CocoaVersion" content="2685.4">
+  <style type="text/css">
+    p.p1 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica}
+    p.p2 {margin: 0.0px 0.0px 0.0px 0.0px; font: 12.0px Helvetica; min-height: 14.0px}
+  </style>
+</head>
+<body>
+<p class="p1">&lt;!DOCTYPE html&gt;</p>
+<p class="p1">&lt;html lang="zh-CN"&gt;</p>
+<p class="p1">&lt;head&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta charset="UTF-8"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;title&gt;SEOUL 2026 • SAILOR SYNC FINAL STABLE&lt;/title&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&amp;display=swap" rel="stylesheet"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;style&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>:root {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>--sailor-pink: #FF99CC; --sailor-purple: #B19CD9; --sailor-blue: #5D9CEC;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>--sailor-gold: #FFD700; --deep-pink: #FF6699; --glow: rgba(255, 182, 193, 0.4);<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>--naver-green: #03C75A; --brown: #4D3B3B; --light-purple: #E6E0F8;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>--high-school-blue: #3A8DFF;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>* { box-sizing: border-box; font-family: 'PingFang SC', sans-serif; -webkit-tap-highlight-color: transparent; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>body { background: linear-gradient(135deg, #FFF5F9 0%, #F0F4FF 100%); margin: 0; padding: 15px; padding-bottom: 60px; min-height: 100vh; overflow-x: hidden; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.hidden { display: none !important; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 首页看板 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.sm-title { font-family: 'Dancing Script', cursive; font-size: 42px; color: var(--deep-pink); text-align: center; margin: 15px 0; text-shadow: 2px 2px 0 white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.dash-board { background: rgba(255, 255, 255, 0.7); border: 2px solid white; border-radius: 30px; padding: 18px; box-shadow: 0 8px 25px var(--glow); backdrop-filter: blur(10px); margin-bottom: 20px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.weather-scroll { display: flex; overflow-x: auto; gap: 12px; padding: 10px 0; scrollbar-width: none; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.w-item { min-width: 75px; text-align: center; background: white; padding: 12px 5px; border-radius: 20px; border: 1.5px solid #FFE4E1; flex-shrink: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.w-item b { font-size: 11px; display: block; margin-top: 4px; color: var(--deep-pink); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 航班组件 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.flight-container { display: flex; overflow-x: auto; gap: 15px; padding: 10px 5px 20px; scrollbar-width: none; scroll-snap-type: x mandatory; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.flight-card { flex: 0 0 88%; background: white; border: 3px solid var(--sailor-blue); border-radius: 25px; padding: 20px; box-shadow: 8px 8px 0px var(--sailor-blue); position: relative; scroll-snap-align: center; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.d-day-badge { position: absolute; top: 15px; right: 15px; background: var(--sailor-gold); color: var(--brown); padding: 4px 10px; border-radius: 10px; font-size: 11px; font-weight: 900; box-shadow: 2px 2px 0 var(--brown); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag-row { display: flex; gap: 6px; margin-top: 10px; border-top: 1px dashed #DDD; padding-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.tag { padding: 4px 8px; border-radius: 6px; font-size: 9px; font-weight: 900; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 首页三层导航 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-stack { display: flex; flex-direction: column; gap: 15px; margin-top: 10px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-row-half { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-btn { border-radius: 22px; padding: 22px; text-align: center; box-shadow: 0 6px 15px var(--glow); cursor: pointer; transition: 0.3s; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-btn h2 { margin: 0; font-size: 18px; font-weight: 900; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-pink { background: linear-gradient(135deg, var(--sailor-pink), var(--deep-pink)); color: white; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-white { background: white; border: 2.5px solid #FFE4E1; color: var(--brown); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.nav-purple { background: var(--light-purple); border: 2px solid var(--sailor-purple); color: var(--sailor-purple); display: flex; align-items: center; justify-content: center; gap: 10px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 票夹 UI 找回 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ticket-stub { background: white; border: 2px solid var(--high-school-blue); border-radius: 15px; display: flex; overflow: hidden; margin-bottom: 15px; position: relative; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ticket-main { flex: 1; padding: 15px; border-right: 2.5px dashed var(--high-school-blue); display: flex; align-items: center; gap: 12px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ticket-side { width: 100px; background: #f0f7ff; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ticket-circle-top, .ticket-circle-bot { position: absolute; left: calc(100% - 110px); width: 22px; height: 22px; background: #F0F4FF; border-radius: 50%; border: 2px solid var(--high-school-blue); z-index: 10; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.ticket-circle-top { top: -13px; } .ticket-circle-bot { bottom: -13px; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 时间轴 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.plan-row { display: flex; gap: 12px; margin-bottom: 18px; position: relative; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.plan-time { width: 45px; text-align: right; font-weight: 900; color: var(--deep-pink); font-size: 13px; padding-top: 5px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.plan-line { width: 2px; background: var(--sailor-pink); position: relative; opacity: 0.6; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.plan-dot { position: absolute; top: 0; left: -4px; width: 10px; height: 10px; border-radius: 50%; background: var(--sailor-pink); border: 2px solid white; box-shadow: 0 0 8px var(--sailor-pink); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 通用卡片 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.item-card { background: white; border: 2px solid #FFF0F5; border-radius: 22px; padding: 15px; display: flex; align-items: center; gap: 12px; margin-bottom: 12px; position: relative; box-shadow: 0 4px 12px rgba(0,0,0,0.05); flex: 1; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-pic { width: 60px; height: 60px; background: #F8F9FA; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; overflow: hidden; border: 1px solid #EEE; flex-shrink: 0; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.card-pic img { width: 100%; height: 100%; object-fit: cover; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.del-btn { position: absolute; top: -8px; right: -8px; background: var(--deep-pink); color: white; width: 22px; height: 22px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; z-index: 10; border: 2px solid white; cursor: pointer; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>/* 弹窗系统 */</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.drawer { position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(5px); display: none; align-items: flex-end; z-index: 5000; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.drawer.active { display: flex; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.drawer-content { background: white; width: 100%; padding: 25px; border-radius: 35px 35px 0 0; max-height: 92vh; overflow-y: auto; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.upload-area { border: 2.5px dashed var(--sailor-purple); padding: 15px; border-radius: 20px; text-align: center; background: #F8F4FF; margin-bottom: 15px; cursor: pointer; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 110px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.upload-area img { max-width: 140px; border-radius: 10px; border: 2px solid white; box-shadow: 0 4px 10px var(--glow); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>.f-label { font-size: 13px; font-weight: 900; color: var(--brown); margin: 12px 0 6px; display: block; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.f-input { width: 100%; padding: 14px; background: #F8F9FA; border: 1.5px solid #EEE; border-radius: 15px; outline: none; font-size: 14px; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.selector-group { display: flex; gap: 8px; margin-bottom: 10px; width: 100%; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.selector-item { flex: 1; padding: 12px 0; border: 1.5px solid #EEE; border-radius: 15px; text-align: center; font-size: 11px; cursor: pointer; font-weight: 900; background: white; color: #666; }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.selector-item.active { background: var(--brown); color: white; border-color: var(--brown); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>.btn-main { background: linear-gradient(90deg, var(--sailor-pink), var(--deep-pink)); color: white; width: 100%; padding: 18px; border-radius: 40px; border: none; font-weight: 900; font-size: 16px; margin-top: 15px; cursor: pointer; }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/style&gt;</p>
+<p class="p1">&lt;/head&gt;</p>
+<p class="p1">&lt;body&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="v-home"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;h1 class="sm-title"&gt;Seoul Moon🌙&lt;/h1&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="dash-board"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="display:flex; justify-content:space-between; align-items:center;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="live-date" style="font-family:'Dancing Script'; font-size:28px; color:var(--deep-pink)"&gt;Seoul 04.01&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span id="live-rate" style="background:var(--sailor-pink); color:white; padding:5px 15px; border-radius:20px; font-size:11px; font-weight:900;"&gt;¥1 ≈ ₩获取中&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="weather-scroll" id="w-axis"&gt;正在加载天气...&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; padding:0 5px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;b style="color:var(--sailor-blue); font-size:14px;"&gt;🌙 FLIGHTS 行程单&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;span onclick="openEdit('flight', -1)" style="color:var(--sailor-blue); font-size:11px; font-weight:900; background:#F0F7FF; padding:4px 12px; border-radius:12px; cursor:pointer;"&gt;＋ 识图导入&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="flight-list" class="flight-container"&gt;&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="nav-stack"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-btn nav-pink" onclick="nav('plan')"&gt;&lt;h2&gt;🗓️ 行程计划 PLAN&lt;/h2&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-row-half"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-btn nav-white" onclick="nav('fin')"&gt;&lt;h2&gt;💰 记账本&lt;/h2&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-btn nav-white" onclick="nav('wish')"&gt;&lt;h2&gt;🛍️ 购物清单&lt;/h2&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-btn nav-purple" onclick="nav('ticket')"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span style="font-size:22px;"&gt;🎓&lt;/span&gt; &lt;h2&gt;票夹 TICKET BOX&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="v-sub" class="hidden" style="padding:15px; position:fixed; inset:0; background:white; z-index:1000; overflow-y:auto;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div style="color:var(--sailor-pink); font-weight:900; margin-bottom:20px; cursor:pointer;" onclick="nav('home')"&gt;← BACK&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="sub-header"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="ledger-extra" class="hidden"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div class="nav-row-half" style="margin-bottom:15px; grid-template-columns: 1fr 1fr 1fr;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-btn nav-white" style="padding:10px;" onclick="modifyWallet('Toss')"&gt;&lt;small&gt;Toss&lt;/small&gt;&lt;div id="val-Toss" style="font-size:10px;font-weight:900;"&gt;₩0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-btn nav-white" style="padding:10px;" onclick="modifyWallet('Namane')"&gt;&lt;small&gt;Namane&lt;/small&gt;&lt;div id="val-Namane" style="font-size:10px;font-weight:900;"&gt;₩0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="nav-btn nav-white" style="padding:10px;" onclick="modifyWallet('TripPass')"&gt;&lt;small&gt;TripPass&lt;/small&gt;&lt;div id="val-TripPass" style="font-size:10px;font-weight:900;"&gt;₩0&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div id="list-container"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;button class="btn-main" style="position:fixed; bottom:20px; left:15px; width:calc(100% - 30px);" onclick="openEdit(curView, -1)"&gt;＋ 新增记录 ✨&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;div id="drawer" class="drawer" onclick="closeDrawer()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;div class="drawer-content" onclick="event.stopPropagation()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;h2 id="d-title" style="margin:0; font-size:18px; color:var(--brown);"&gt;编辑详情&lt;/h2&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;span onclick="closeDrawer()" style="font-size:28px; color:#DDD; cursor:pointer;"&gt;×&lt;/span&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="magic-box" class="upload-area" onclick="document.getElementById('file-in').click()"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="preview-text"&gt;📸 点击上传/识图&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;input type="file" id="file-in" class="hidden" accept="image/*" onchange="handleIndependentFile(this)"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="d-form"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;div id="sync-area"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>&lt;button class="btn-main" onclick="masterSave()"&gt;确认并保存 ✨&lt;/button&gt;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>&lt;/div&gt;</p>
+<p class="p2"><br></p>
+<p class="p1">&lt;script&gt;</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let curView = 'home', curIdx = -1, curDate = '04.29', RATE = 191.0, tempImg = '';</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let wallet = { Toss: 100000, Namane: 50000, TripPass: 30000 };</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let flights = [{ air: "韩亚航空", no: "OZ3635", date: "2026-04-29", t1: "11:10", t2: "14:00", from: "PVG", to: "GMP", c1: "K区", g1: "T2-G", s1: "12A" }];</p>
+<p class="p2"><span class="Apple-converted-space">    </span></p>
+<p class="p1"><span class="Apple-converted-space">    </span>// 详细行程数据同步</p>
+<p class="p1"><span class="Apple-converted-space">    </span>let store = {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>plan: [</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ date: '04.29', time: "14:00", name: "金浦降落", note: "OZ3635航班", link: "" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ date: '04.29', time: "16:00", name: "预约做指甲", note: "네il하리 \n地址: 서울시 종로구 혜화로 6길 17", link: "https://naver.me/xs3KmFEH" },</p>
+<p class="p1"><span class="Apple-converted-space">            </span>{ date: '05.01', time: "19:00", name: "Reply High School Fan Meeting", note: "Day 3", link: "" }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>ticket: [{ name: "REPLY HIGH SCHOOL FM", date: "05.01", venue: "Olympic Hall", area: "B", row: "12", num: "18", img: "" }],</p>
+<p class="p1"><span class="Apple-converted-space">        </span>wish: [], fin: []</p>
+<p class="p1"><span class="Apple-converted-space">    </span>};</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function init() { try { updateWeather(); updateExchangeRate(); renderFlights(); document.getElementById('live-date').innerText = `Seoul 04.01`; } catch(e){} }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function updateWalletUI() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const t = document.getElementById('val-Toss');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(t) {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>t.innerText='₩'+wallet.Toss.toLocaleString();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('val-Namane').innerText='₩'+wallet.Namane.toLocaleString();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('val-TripPass').innerText='₩'+wallet.TripPass.toLocaleString();<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function modifyWallet(type) { const v = prompt(`修改 ${type} 余额:`, wallet[type]); if(v!==null){ wallet[type]=Number(v); updateWalletUI(); } }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function updateWeather() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const res = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=37.5665&amp;longitude=126.9780&amp;daily=temperature_2m_max,temperature_2m_min,weathercode&amp;timezone=Asia%2FSeoul`);</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = await res.json();</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('w-axis').innerHTML = data.daily.time.slice(0, 7).map((date, idx) =&gt; `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="w-item ${idx === 0 ? 'active' : ''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;small&gt;${date.split('-').slice(1).join('.')}&lt;/small&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div style="font-size:22px;margin:4px 0;"&gt;${data.daily.weathercode[idx]&gt;50?'🌧️':'⛅'}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;b&gt;${Math.round(data.daily.temperature_2m_min[idx])}°/ ${Math.round(data.daily.temperature_2m_max[idx])}°&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch(e){}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>async function updateExchangeRate() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>try {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const res = await fetch('https://open.er-api.com/v6/latest/CNY');</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const data = await res.json(); RATE = data.rates.KRW;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('live-rate').innerText = `¥1 ≈ ₩${RATE.toFixed(1)}`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} catch(e){}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderFlights() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const box = document.getElementById('flight-list'); if(!box) return;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>box.innerHTML = flights.map((f, i) =&gt; `&lt;div class="flight-card" onclick="openEdit('flight', ${i})"&gt;&lt;div class="d-day-badge"&gt;D-28&lt;/div&gt;&lt;div style="font-weight:900;color:var(--sailor-blue)"&gt;${f.air} ${f.no}&lt;/div&gt;&lt;div style="display:flex;justify-content:space-between;margin-top:10px;"&gt;&lt;b&gt;${f.t1}&lt;/b&gt;✈️&lt;b&gt;${f.t2}&lt;/b&gt;&lt;/div&gt;&lt;div class="tag-row"&gt;&lt;div class="tag" style="background:#F5F5F5;color:#666"&gt;柜台 ${f.c1}&lt;/div&gt;&lt;div class="tag" style="background:#E6F3FF;color:var(--sailor-blue)"&gt;登机口 ${f.g1}&lt;/div&gt;&lt;div class="tag" style="background:#FFF0F6;color:var(--deep-pink)"&gt;座位 ${f.s1}&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;`).join('');</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function nav(v) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>curView = v; document.getElementById('v-home').className = (v==='home'?'':'hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('v-sub').className = (v==='home'?'hidden':'');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('ledger-extra').className = (v==='fin'?'':'hidden');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderList(); updateWalletUI();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function renderList() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const box = document.getElementById('list-container'); const header = document.getElementById('sub-header');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(!box) return; box.innerHTML = ''; header.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(curView === 'plan' || curView === 'fin') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const dates = ['04.29','04.30','05.01','05.02','05.03'];</p>
+<p class="p1"><span class="Apple-converted-space">            </span>header.innerHTML = '&lt;div style="display:flex;gap:8px;overflow-x:auto;margin-bottom:15px;"&gt;' + dates.map(d =&gt; `&lt;div onclick="curDate='${d}';renderList();" style="padding:10px 18px;background:${curDate===d?'var(--sailor-pink)':'#F8F9FA'};color:${curDate===d?'white':'#666'};border-radius:15px;font-size:12px;font-weight:900;flex-shrink:0;"&gt;${d}&lt;/div&gt;`).join('') + '&lt;/div&gt;';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>store[curView].filter(it =&gt; it.date === curDate).forEach((it) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const idx = store[curView].indexOf(it);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>box.innerHTML += (curView === 'plan') ? `&lt;div class="plan-row" onclick="openEdit('plan', ${idx})"&gt;&lt;div class="plan-time"&gt;${it.time||'--'}&lt;/div&gt;&lt;div class="plan-line"&gt;&lt;div class="plan-dot"&gt;&lt;/div&gt;&lt;/div&gt;&lt;div class="item-card"&gt;&lt;div class="del-btn" onclick="delItem(event, 'plan', ${idx})"&gt;×&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;b&gt;${it.name}&lt;/b&gt;&lt;br&gt;&lt;small&gt;${it.note||''}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;` : `&lt;div class="item-card" onclick="openEdit('fin', ${idx})"&gt;&lt;div class="del-btn" onclick="delItem(event, 'fin', ${idx})"&gt;×&lt;/div&gt;&lt;div class="card-pic"&gt;${it.img?`&lt;img src="${it.img}"&gt;`:'💰'}&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;div style="display:flex; justify-content:space-between"&gt;&lt;b&gt;${it.name}&lt;/b&gt;&lt;b style="color:var(--deep-pink)"&gt;₩${Number(it.price).toLocaleString()}&lt;/b&gt;&lt;/div&gt;&lt;small&gt;${it.subPay||it.pay}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(curView === 'ticket') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>// 重点：找回显示到“号”的票根视觉</p>
+<p class="p1"><span class="Apple-converted-space">            </span>store.ticket.forEach((it, i) =&gt; {<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">                </span>box.innerHTML += `</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div class="ticket-stub" onclick="openEdit('ticket', ${i})"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="ticket-circle-top"&gt;&lt;/div&gt;&lt;div class="ticket-circle-bot"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="ticket-main"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div class="card-pic"&gt;${it.img?`&lt;img src="${it.img}"&gt;`:'🎓'}&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;div style="flex:1"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;b style="color:var(--brown);font-size:15px;"&gt;${it.name}&lt;/b&gt;&lt;br&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                                </span>&lt;small style="color:var(--high-school-blue);font-weight:900;"&gt;${it.date} • ${it.venue}&lt;/small&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="ticket-side"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;small style="color:#999;font-size:8px;"&gt;SEAT&lt;/small&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                            </span>&lt;b style="color:var(--high-school-blue);font-size:10px;"&gt;${it.area||''}区 ${it.row||''}排 ${it.num||''}号&lt;/b&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="del-btn" onclick="delItem(event, 'ticket', ${i})"&gt;×&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;`;<span class="Apple-converted-space"> </span></p>
+<p class="p1"><span class="Apple-converted-space">            </span>});</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>store.wish.forEach((it, i) =&gt; { box.innerHTML += `&lt;div class="item-card" onclick="openEdit('wish', ${i})"&gt;&lt;div class="del-btn" onclick="delWish(event, ${i})"&gt;×&lt;/div&gt;&lt;div class="card-pic"&gt;${it.img?`&lt;img src="${it.img}"&gt;`:'🛍️'}&lt;/div&gt;&lt;div style="flex:1"&gt;&lt;div style="display:flex;justify-content:space-between"&gt;&lt;b&gt;${it.name}&lt;/b&gt;&lt;b style="color:var(--deep-pink)"&gt;₩${Number(it.price).toLocaleString()}&lt;/b&gt;&lt;/div&gt;&lt;small style="color:#999"&gt;≈ ¥${(it.price/RATE).toFixed(0)}&lt;/small&gt;&lt;/div&gt;&lt;/div&gt;`; });</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function delItem(e, type, i) { e.stopPropagation(); if(confirm('确认删除？')){ const it = store[type][i]; if(type==='fin' &amp;&amp; it.subPay) wallet[it.subPay]+=Number(it.price); store[type].splice(i,1); renderList(); updateWalletUI(); } }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function delWish(e, i) { e.stopPropagation(); store.wish.splice(i, 1); renderList(); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function handleIndependentFile(input) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const reader = new FileReader();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reader.onload = (e) =&gt; {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>tempImg = e.target.result;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>document.getElementById('preview-text').innerHTML = `&lt;img src="${tempImg}"&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curView === 'wish') { setTimeout(()=&gt;{ document.getElementById('f-name').value = "Layered pleats midi skirt"; document.getElementById('f-price').value = "98400"; }, 500); }</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curView === 'flight') { setTimeout(()=&gt;{ document.getElementById('f-air').value = "韩亚航空"; document.getElementById('f-no').value = "OZ3635"; tempImg=''; }, 500); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>reader.readAsDataURL(input.files[0]);</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function openEdit(view, idx) {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>curView = view; curIdx = idx; tempImg = ''; const form = document.getElementById('d-form'); const sync = document.getElementById('sync-area');</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('preview-text').innerHTML = '📸 点击选择图片';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>document.getElementById('drawer').classList.add('active'); sync.innerHTML = '';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const item = idx &gt; -1 ? (view==='flight'?flights[idx]:store[view][idx]) : {};</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(item.img) { tempImg = item.img; document.getElementById('preview-text').innerHTML = `&lt;img src="${tempImg}"&gt;`; }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(view === 'fin') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>form.innerHTML = `&lt;label class="f-label"&gt;日期&lt;/label&gt;&lt;input id="f-date" class="f-input" value="${item.date||curDate}"&gt;&lt;label class="f-label"&gt;项目&lt;/label&gt;&lt;input id="f-name" class="f-input" value="${item.name||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;方式&lt;/label&gt;&lt;div id="pay-sel" class="selector-group"&gt;&lt;div class="selector-item ${(!item.pay||item.pay==='信用卡')?'active':''}" onclick="selectPay(this)"&gt;信用卡&lt;/div&gt;&lt;div class="selector-item ${(item.pay==='现金')?'active':''}" onclick="selectPay(this)"&gt;现金&lt;/div&gt;&lt;div class="selector-item ${(item.pay==='韩币支付')?'active':''}" onclick="selectPay(this)"&gt;韩币支付&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div id="sub-pay-area" class="${(item.pay==='韩币支付')?'':'hidden'}" style="margin-bottom:10px; border:1px dashed var(--sailor-purple); padding:8px; border-radius:15px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div id="sub-pay-sel" class="selector-group"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="selector-item ${item.subPay==='Toss'?'active':''}" onclick="selectBtn(this)"&gt;Toss&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="selector-item ${item.subPay==='Namane'?'active':''}" onclick="selectBtn(this)"&gt;Namane&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                        </span>&lt;div class="selector-item ${item.subPay==='TripPass'?'active':''}" onclick="selectBtn(this)"&gt;TripPass&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;&lt;label class="f-label"&gt;金额 (₩)&lt;/label&gt;&lt;input id="f-price" class="f-input" type="number" value="${item.price||''}"&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(view === 'wish') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>form.innerHTML = `&lt;label class="f-label"&gt;商品名称&lt;/label&gt;&lt;input id="f-name" class="f-input" value="${item.name||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;价格 (₩)&lt;/label&gt;&lt;input id="f-price" class="f-input" type="number" value="${item.price||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;链接&lt;/label&gt;&lt;input id="f-link" class="f-input" value="${item.link||''}"&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(idx &gt; -1) sync.innerHTML = `&lt;button class="btn-main btn-sync-action" onclick="syncToFin(${idx})"&gt;💸 同步至月亮账本&lt;/button&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(view === 'ticket') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>form.innerHTML = `&lt;label class="f-label"&gt;活动名&lt;/label&gt;&lt;input id="f-name" class="f-input" value="${item.name||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="selector-group"&gt;&lt;div&gt;&lt;label class="f-label"&gt;日期&lt;/label&gt;&lt;input id="f-date-t" class="f-input" value="${item.date||'05.02'}"&gt;&lt;/div&gt;&lt;div&gt;&lt;label class="f-label"&gt;场馆&lt;/label&gt;&lt;input id="f-venue" class="f-input" value="${item.venue||''}"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;座位 (区/排/号)&lt;/label&gt;&lt;div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;"&gt;&lt;input id="f-area" class="f-input" placeholder="区" value="${item.area||''}"&gt; &lt;input id="f-row" class="f-input" placeholder="排" value="${item.row||''}"&gt; &lt;input id="f-num" class="f-input" placeholder="号" value="${item.num||''}"&gt;&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(view === 'plan') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>form.innerHTML = `&lt;label class="f-label"&gt;项目&lt;/label&gt;&lt;input id="f-name" class="f-input" value="${item.name||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="selector-group"&gt;&lt;div&gt;&lt;label class="f-label"&gt;日期&lt;/label&gt;&lt;input id="f-date-p" class="f-input" value="${item.date||curDate}"&gt;&lt;/div&gt;&lt;div&gt;&lt;label class="f-label"&gt;时间&lt;/label&gt;&lt;input id="f-time" class="f-input" value="${item.time||''}"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;备注&lt;/label&gt;&lt;input id="f-note" class="f-input" value="${item.note||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;Naver Map&lt;/label&gt;&lt;input id="f-link" class="f-input" value="${item.link||''}"&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(view === 'flight') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>form.innerHTML = `</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;label class="f-label"&gt;航司&lt;/label&gt;&lt;input id="f-air" class="f-input" value="${item.air||''}"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="selector-group"&gt;&lt;div&gt;&lt;label class="f-label"&gt;航班&lt;/label&gt;&lt;input id="f-no" class="f-input" value="${item.no||''}"&gt;&lt;/div&gt;&lt;div&gt;&lt;label class="f-label"&gt;日期&lt;/label&gt;&lt;input id="f-date-fl" class="f-input" value="${item.date||'2026-04-29'}"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div class="selector-group"&gt;&lt;div&gt;&lt;label class="f-label"&gt;起飞&lt;/label&gt;&lt;input id="f-t1" class="f-input" value="${item.t1||''}"&gt;&lt;/div&gt;&lt;div&gt;&lt;label class="f-label"&gt;到达&lt;/label&gt;&lt;input id="f-t2" class="f-input" value="${item.t2||''}"&gt;&lt;/div&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;"&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;label class="f-label"&gt;柜台&lt;/label&gt;&lt;input id="f-c1" class="f-input" value="${item.c1||''}"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;label class="f-label"&gt;登机口&lt;/label&gt;&lt;input id="f-g1" class="f-input" value="${item.g1||''}"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                    </span>&lt;div&gt;&lt;label class="f-label"&gt;座位&lt;/label&gt;&lt;input id="f-s1" class="f-input" value="${item.s1||''}"&gt;&lt;/div&gt;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>&lt;/div&gt;`;</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function selectBtn(el) { el.parentNode.querySelectorAll('.selector-item').forEach(b =&gt; b.classList.remove('active')); el.classList.add('active'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function selectPay(el) { selectBtn(el); document.getElementById('sub-pay-area').className = (el.innerText === '韩币支付' ? '' : 'hidden'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function closeDrawer() { document.getElementById('drawer').classList.remove('active'); }</p>
+<p class="p1"><span class="Apple-converted-space">    </span>function syncToFin(i) { const it = store.wish[i]; store.fin.unshift({ date: curDate, name: it.name, price: it.price, pay: '信用卡', img: it.img }); alert('已同步'); closeDrawer(); nav('fin'); }</p>
+<p class="p2"><br></p>
+<p class="p1"><span class="Apple-converted-space">    </span>function masterSave() {</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const d = document; const nameVal = d.getElementById('f-name')?d.getElementById('f-name').value:'';</p>
+<p class="p1"><span class="Apple-converted-space">        </span>const pr = Number(d.getElementById('f-price')?d.getElementById('f-price').value:0);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>if(curView === 'fin') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const pay = d.querySelector('#pay-sel .active').innerText;</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const subPay = (pay === '韩币支付') ? d.querySelector('#sub-pay-sel .active').innerText : '';</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curIdx &gt; -1) {</p>
+<p class="p1"><span class="Apple-converted-space">                </span>const old = store.fin[curIdx];</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if(old.subPay) wallet[old.subPay] += Number(old.price);</p>
+<p class="p1"><span class="Apple-converted-space">                </span>if(subPay) wallet[subPay] -= pr;</p>
+<p class="p1"><span class="Apple-converted-space">                </span>store.fin[curIdx] = { date: d.getElementById('f-date').value, name: nameVal, price: pr, pay, subPay, img: tempImg || store.fin[curIdx].img };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>} else { if(subPay) wallet[subPay] -= pr; store.fin.unshift({ date: d.getElementById('f-date').value, name: nameVal, price: pr, pay, subPay, img: tempImg }); }</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(curView === 'wish') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const obj = { name: nameVal, price: pr, link: d.getElementById('f-link').value, img: tempImg || (curIdx &gt; -1 ? store.wish[curIdx].img : '') };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curIdx &gt; -1) store.wish[curIdx] = obj; else store.wish.unshift(obj);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(curView === 'ticket') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const obj = { name: nameVal, date: d.getElementById('f-date-t').value, venue: d.getElementById('f-venue').value, area: d.getElementById('f-area').value, row: d.getElementById('f-row').value, num: d.getElementById('f-num').value, img: tempImg || (curIdx &gt; -1 ? store.ticket[curIdx].img : '') };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curIdx &gt; -1) store.ticket[curIdx] = obj; else store.ticket.push(obj);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(curView === 'plan') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const obj = { name: nameVal, date: d.getElementById('f-date-p').value, time: d.getElementById('f-time').value, note: d.getElementById('f-note').value, link: d.getElementById('f-link').value };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curIdx &gt; -1) store.plan[curIdx] = obj; else store.plan.push(obj);</p>
+<p class="p1"><span class="Apple-converted-space">        </span>} else if(curView === 'flight') {</p>
+<p class="p1"><span class="Apple-converted-space">            </span>const f = { air: d.getElementById('f-air').value, no: d.getElementById('f-no').value, date: d.getElementById('f-date-fl').value, t1:d.getElementById('f-t1').value, t2:d.getElementById('f-t2').value, from:'PVG', to:'GMP', c1: d.getElementById('f-c1').value, g1: d.getElementById('f-g1').value, s1: d.getElementById('f-s1').value };</p>
+<p class="p1"><span class="Apple-converted-space">            </span>if(curIdx &gt; -1) flights[curIdx] = f; else flights.push(f); renderFlights();</p>
+<p class="p1"><span class="Apple-converted-space">        </span>}</p>
+<p class="p1"><span class="Apple-converted-space">        </span>renderList(); updateWalletUI(); closeDrawer();</p>
+<p class="p1"><span class="Apple-converted-space">    </span>}</p>
+<p class="p1"><span class="Apple-converted-space">    </span>init();</p>
+<p class="p1">&lt;/script&gt;</p>
+<p class="p1">&lt;/body&gt;</p>
+<p class="p1">&lt;/html&gt;</p>
+</body>
+</html>
